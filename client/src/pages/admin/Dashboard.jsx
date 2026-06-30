@@ -30,8 +30,8 @@ const Dashboard = () => {
         try {
             const token = localStorage.getItem('adminToken');
             const [showsRes, bookingsRes] = await Promise.all([
-                axios.get('http://localhost:3000/api/show/all', { headers: { token } }),
-                axios.get('http://localhost:3000/api/booking/all', { headers: { token } })
+                axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/show/all`, { headers: { token } }),
+                axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/booking/all`, { headers: { token } })
             ]);
 
             let activeShows = [];

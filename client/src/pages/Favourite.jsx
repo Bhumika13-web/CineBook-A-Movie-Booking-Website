@@ -15,7 +15,7 @@ const Favourite = () => {
       try {
         const token = await getToken()
         if (token) {
-          const res = await axios.get('http://localhost:3000/api/favorite/my-favorites', {
+          const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/favorite/my-favorites`, {
             headers: { Authorization: `Bearer ${token}` }
           })
           if (res.data.success) {

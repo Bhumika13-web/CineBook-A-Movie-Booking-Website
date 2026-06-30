@@ -23,7 +23,7 @@ const SeatLayout = () => {
   
   const getShow = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/movie/${id}`);
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/movie/${id}`);
       if (res.data.success) {
         const { movie, shows } = res.data;
         const formattedDateTime = {};
@@ -78,7 +78,7 @@ const SeatLayout = () => {
           order_id: data.id,
           handler: async (response) => {
               try {
-                  const verifyRes = await axios.post('http://localhost:3000/api/booking/verify-razorpay-payment', {
+                  const verifyRes = await axios.post(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/booking/verify-razorpay-payment`, {
                       ...response,
                       bookingDetails
                   }, { headers: { Authorization: `Bearer ${token}` } });
@@ -120,7 +120,7 @@ const SeatLayout = () => {
           };
 
           // Create Razorpay Order
-          const res = await axios.post('http://localhost:3000/api/booking/create-razorpay-order', {
+          const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/booking/create-razorpay-order`, {
               amount: totalAmount
           }, {
               headers: { Authorization: `Bearer ${token}` }

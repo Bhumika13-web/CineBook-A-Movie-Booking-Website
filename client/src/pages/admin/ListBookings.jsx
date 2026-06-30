@@ -13,7 +13,7 @@ const ListBookings = () => {
     const getAllBookings=async ()=>{
       try {
         const token = localStorage.getItem('adminToken');
-        const res = await axios.get('http://localhost:3000/api/booking/all', {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/booking/all`, {
             headers: { token }
         });
         if (res.data.success) {

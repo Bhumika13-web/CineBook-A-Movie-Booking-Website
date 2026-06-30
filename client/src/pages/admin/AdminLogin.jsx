@@ -11,7 +11,7 @@ const AdminLogin = () => {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:3000/api/admin/login', { email, password });
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/admin/login`, { email, password });
             if (res.data.success) {
                 localStorage.setItem('adminToken', res.data.token);
                 toast.success('Login Successful');

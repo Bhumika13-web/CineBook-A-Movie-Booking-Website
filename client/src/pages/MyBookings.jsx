@@ -21,7 +21,7 @@ const MyBookings = () => {
       const token = await getToken();
       if (!token) return;
 
-      const res = await axios.get('http://localhost:3000/api/booking/my-bookings', {
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/booking/my-bookings`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {

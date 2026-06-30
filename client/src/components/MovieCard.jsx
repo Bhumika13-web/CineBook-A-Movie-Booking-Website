@@ -23,7 +23,7 @@ const MovieCard = ({movie, isFavorite = false}) => {
         
         try {
             const token = await getToken();
-            const res = await axios.post('http://localhost:3000/api/favorite/toggle', { movieId: movie._id }, {
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/favorite/toggle`, { movieId: movie._id }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             if (res.data.success) {

@@ -17,7 +17,7 @@ const AddShows = () => {
 
   const fetchNowPlayingMovies= async() =>{
     try {
-      const res = await axios.get('http://localhost:3000/api/show/now-playing');
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/show/now-playing`);
       if (res.data.success) {
         setNowPlayingMovies(res.data.movie);
       }
@@ -77,7 +77,7 @@ const AddShows = () => {
 
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.post("http://localhost:3000/api/show/add", {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}/api/show/add`, {
         movieId: selectedMovie,
         showsInput,
         showPrice: Number(showPrice),

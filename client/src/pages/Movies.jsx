@@ -10,7 +10,7 @@ const Movies = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/movie/all');
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL || `${import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"}`}/api/movie/all`);
         if (res.data.success) {
           setMovies(res.data.movies);
         }
